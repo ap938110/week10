@@ -1,0 +1,49 @@
+import java.awt.*;
+import java.awt.event.*;
+ 
+public class SudokuGame {
+	
+	public static void main(String[] args){
+		SudoFrame s = new SudoFrame();
+		s.setVisible(true);
+	}
+ 
+}
+ 
+class SudoFrame extends Frame{
+	
+		private Sudoarr sudo = new Sudoarr();
+		private Panel pan = new Panel(new GridLayout(9,9,0,0));	
+		private Panel btnpan = new Panel(new GridLayout(4,4,0,0));	
+		private TextField[] tfs = new TextField[81];
+		private Font fnt = new Font("",Font.ITALIC,25);
+		private MenuBar mb = new MenuBar();  
+		private Menu menuFile = new Menu("難度");  
+		private MenuItem mItemEazy, mItemNorm, mItemHard;  
+		private String[] sudolabs = new String[81];		
+		private String[] answerstr = new String[81];
+		private int[][] sarr = sudo.getqarr();//題目
+		private int[][] answer = sudo.getarr();//正確答案		
+		private Button btnExit=new Button("離開");
+		private Button btnAnswer=new Button("看解答");
+		private Button btnSubmit=new Button("提交答案");
+		private int index=0;
+		
+		
+		
+			
+	public SudoFrame(){
+		init();
+	}
+	
+	private void init(){			
+			this.setBounds(500, 500, 600, 400);
+			this.setLayout(new BorderLayout(10,0));
+			this.add(pan,BorderLayout.CENTER);
+			btnpan.add(btnSubmit);
+			btnpan.add(btnAnswer);
+			btnpan.add(btnExit);
+			btnpan.setPreferredSize(new Dimension(100, 100));
+			this.add(btnpan,BorderLayout.EAST);
+			sudo.setHard(50);
+			//-------------功能Bar--------
