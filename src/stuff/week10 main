@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
  
-public class SudokuGame {
+public class week10 main {
 	
 	public static void main(String[] args){
 		SudoFrame s = new SudoFrame();
