@@ -1,0 +1,61 @@
+public class week10 {
+	
+	private int[][] qarr ;
+	private int[][] arr ;
+	private int hard = 50;
+ 
+	public Sudoarr(){
+		arr = new int[][]{
+			{1,2,3,4,5,6,7,8,9},
+			{4,5,6,7,8,9,1,2,3},
+			{7,8,9,1,2,3,4,5,6},
+			{2,1,4,3,6,5,8,9,7},
+			{3,6,5,8,9,7,2,1,4},
+			{8,9,7,2,1,4,3,6,5},
+			{5,3,1,6,4,2,9,7,8},
+			{6,4,2,9,7,8,5,3,1},
+			{9,7,8,5,3,1,6,4,2}			
+		};				
+		arr = arrNtrans(arrCtrans(arrRtrans(arr)));
+
+		
+	}
+			
+	public void showarr(){
+		for(int i =0;i<9;i++){
+			for(int j=0;j<9;j++){
+				System.out.print(qarr[i][j]+" ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+ 
+	}
+	
+	public int[][] getqarr(){
+		qarr = dighole(arr,hard);
+		return qarr;
+	}
+	
+	public void setHard(int hard0){
+		hard = hard0;
+	}
+	
+	public int[][] getarr(){
+		return arr;
+	}
+	//----列互換轉換---------------------------	
+	private int[][] arrRtrans(int[][] arr){
+		int[] tmp = new int[9];
+		int s =0;
+		for(int j=0;j<3;j++){
+ 
+			for(int i =0;i<3;i++){
+				int r = (int)(Math.random()*3);
+				tmp = arr[0];
+				arr[0] = arr[r+s];
+				arr[0] = tmp;
+			}
+			s+=3;
+		}
+		return arr;
